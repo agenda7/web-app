@@ -6,6 +6,7 @@ import Typography from 'material-ui/Typography'
 import red from 'material-ui/colors/red'
 import Button from 'material-ui/Button'
 import Card, { CardHeader, CardMedia, CardContent } from 'material-ui/Card'
+import TextField from 'material-ui/TextField'
 import { withStyles } from 'material-ui/styles'
 
 const data = {
@@ -31,6 +32,9 @@ const styles = theme => ({
   avatar: {
     backgroundColor: red[500],
   },
+  textField: {
+    marginBottom: '200px'
+  }
 })
 
 class Service extends React.Component {
@@ -70,15 +74,27 @@ class Service extends React.Component {
                 </Typography>
               </Grid>
               <Grid item xs={12} sm={5} lg={4}>
+                <Typography variant="display1">
+                  {data.price}
+                </Typography>
+                <br />
+                <TextField
+                  id="datetime-local"
+                  label="Next appointment"
+                  type="datetime-local"
+                  defaultValue="2017-05-24T10:30"
+                  className={classes.TextField}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+                <br />
                 <Typography component="p" gutterBottom>
                   <Button variant="raised" size="large" color="primary">
                     Solicitar serviço
                   </Button>
                 </Typography>
                 <br />
-                <Typography variant="display1">
-                  {data.price}
-                </Typography>
               </Grid>
             </Grid>
           </CardContent>
