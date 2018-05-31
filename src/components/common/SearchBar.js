@@ -1,7 +1,7 @@
 import React from 'react'
-import Grid from 'material-ui/Grid'
+import Grid from '@material-ui/core/Grid'
 
-import TextField from 'material-ui/TextField';
+import TextField from '@material-ui/core/TextField';
 import Search from '@material-ui/icons/Search';
 
 export default class SearchBar extends React.Component {

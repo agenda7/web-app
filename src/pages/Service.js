@@ -1,13 +1,15 @@
-import Grid from 'material-ui/Grid'
+import Grid from '@material-ui/core/Grid'
 import React from 'react'
 import PropTypes from 'prop-types'
-import Avatar from 'material-ui/Avatar'
-import Typography from 'material-ui/Typography'
-import red from 'material-ui/colors/red'
-import Button from 'material-ui/Button'
-import Card, { CardHeader, CardMedia, CardContent } from 'material-ui/Card'
-import TextField from 'material-ui/TextField'
-import { withStyles } from 'material-ui/styles'
+import Avatar from '@material-ui/core/Avatar'
+import Typography from '@material-ui/core/Typography'
+import red from '@material-ui/core/colors/red'
+import Card from '@material-ui/core/Card'
+import CardHeader from '@material-ui/core/CardHeader'
+import CardMedia from '@material-ui/core/CardMedia'
+import CardContent from '@material-ui/core/CardContent'
+import { withStyles } from '@material-ui/core/styles'
+import RequestService from '../components/service/RequestService'
 
 const data = {
   id: 6,
@@ -46,7 +48,6 @@ class Service extends React.Component {
 
   render() {
     const { classes, match } = this.props
-    const { serviceId } = match.params
     const avatar = (
       <Avatar aria-label="Company" className={classes.avatar}>
         {data.company.name.substring(0, 1).toUpperCase()}
@@ -74,27 +75,7 @@ class Service extends React.Component {
                 </Typography>
               </Grid>
               <Grid item xs={12} sm={5} lg={4}>
-                <Typography variant="display1">
-                  {data.price}
-                </Typography>
-                <br />
-                <TextField
-                  id="datetime-local"
-                  label="Next appointment"
-                  type="datetime-local"
-                  defaultValue="2017-05-24T10:30"
-                  className={classes.TextField}
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                />
-                <br />
-                <Typography component="p" gutterBottom>
-                  <Button variant="raised" size="large" color="primary">
-                    Solicitar serviço
-                  </Button>
-                </Typography>
-                <br />
+                <RequestService data={data} />
               </Grid>
             </Grid>
           </CardContent>

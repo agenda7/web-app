@@ -1,12 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Avatar from 'material-ui/Avatar';
-import Typography from 'material-ui/Typography';
-import red from 'material-ui/colors/red';
+import React from 'react'
+import PropTypes from 'prop-types'
 import { Link } from "react-router-dom"
-import Card, { CardHeader, CardMedia, CardContent } from 'material-ui/Card';
-import { withStyles } from 'material-ui/styles';
-import './ServiceCard.css';
+import Avatar from '@material-ui/core/Avatar'
+import Typography from '@material-ui/core/Typography'
+import red from '@material-ui/core/colors/red'
+import { withStyles } from '@material-ui/core/styles'
+import Card from '@material-ui/core/Card'
+import CardHeader from '@material-ui/core/CardHeader'
+import CardMedia from '@material-ui/core/CardMedia'
+import CardContent from '@material-ui/core/CardContent'
+import './ServiceCard.css'
 
 const styles = theme => ({
   card: {},
@@ -19,14 +22,14 @@ const styles = theme => ({
   avatar: {
     backgroundColor: red[500],
   },
-});
+})
 
 class ServiceCard extends React.Component {
-  state = { expanded: false };
+  state = { expanded: false }
 
   handleExpandClick = () => {
-    this.setState({ expanded: !this.state.expanded });
-  };
+    this.setState({ expanded: !this.state.expanded })
+  }
 
   render() {
     const { classes, data } = this.props
@@ -57,12 +60,12 @@ class ServiceCard extends React.Component {
           </Card>
         </Link>
       </article>
-    );
+    )
   }
 }
 
 ServiceCard.propTypes = {
   classes: PropTypes.object.isRequired,
-};
+}
 
-export default withStyles(styles)(ServiceCard);
+export default withStyles(styles)(ServiceCard)
