@@ -2,12 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
-import TextField from '@material-ui/core/TextField'
 import { withStyles } from '@material-ui/core/styles'
 import { withRouter } from 'react-router-dom'
 
 import RequestConfirm from './RequestConfirm'
-import * as Agenda  from '../../mocks/agenda'
+import Schedule from '../../mocks/schedule'
 
 const styles = theme => ({
   textField: {
@@ -20,6 +19,7 @@ class RequestService extends React.Component {
     super(props)
     this.state = {
       dialogOpen: false,
+      isScheduled: Schedule.isScheduled(props.data.id),
       form: {
         datetime: null
       }
@@ -59,13 +59,32 @@ class RequestService extends React.Component {
 
   submit () {
     const { data, history } = this.props
-    Agenda.push(data, this.state.form.datetime)
+    Schedule.push(data, this.state.form.datetime)
+    this.setState({ isScheduled: true })
     history.push('/agenda')
   }
 
+  cancelEvent () {
+    const { data } = this.props
+    Schedule.pop(data.id)
+    this.setState({ isScheduled: false })
+  }
+
   render() {
-    const { classes, data } = this.props
-    const { form } = this.state
+    const { data } = this.props
+    const { form, isScheduled } = this.state
+    
+    const requestBtn = isScheduled ? null : (
+      <Button variant="raised" size="large" color="primary" onClick={this.handleClickOpen.bind(this)}>
+        Solicitar serviço
+      </Button>
+    )
+
+    const cancelBtn = isScheduled ? (
+      <Button variant="raised" size="large" color="secondary" onClick={this.cancelEvent.bind(this)}>
+        Cancelar serviço
+      </Button>
+    ) : null
 
     return (
       <div>
@@ -74,9 +93,8 @@ class RequestService extends React.Component {
         </Typography>
         <br />
         <Typography component="p" gutterBottom>
-          <Button variant="raised" size="large" color="primary" onClick={this.handleClickOpen.bind(this)}>
-            Solicitar serviço
-          </Button>
+          {requestBtn}
+          {cancelBtn}
           <RequestConfirm
             open={this.state.dialogOpen}
             onClose={this.handleClose.bind(this)}
@@ -89,7 +107,7 @@ class RequestService extends React.Component {
 }
 
 RequestService.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 }
 
 export default withStyles(styles)(withRouter(RequestService))

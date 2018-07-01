@@ -8,7 +8,6 @@ import ListItemText from '@material-ui/core/ListItemText'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import Dialog from '@material-ui/core/Dialog'
 import TodayIcon from '@material-ui/icons/Today'
-import AddIcon from '@material-ui/icons/Add'
 import dates from '../../mocks/dates'
 
 export default class RequestConfirm extends React.Component {

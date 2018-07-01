@@ -80,8 +80,8 @@ class Header extends React.Component {
                   open={open}
                   onClose={this.handleClose}
                 >
-                  <MenuItem onClick={this.handleClose}>Meu perfil</MenuItem>
-                  <MenuItem onClick={this.handleChange}>Sair</MenuItem>
+                  <MenuItem>Meu perfil</MenuItem>
+                  <MenuItem>Sair</MenuItem>
                 </Menu>
               </div>
               ) : <Link to="/login"><Button color="inherit" onClick={this.handleChange}>Login</Button></Link>}
