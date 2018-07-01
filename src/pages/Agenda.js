@@ -3,12 +3,13 @@ import moment from "moment"
 import Calendar from "react-big-calendar"
 import Schedule from '../mocks/schedule'
 import Container from "../components/base/Container"
+import { withRouter } from 'react-router-dom'
 
 import "react-big-calendar/lib/css/react-big-calendar.css"
 
 Calendar.setLocalizer(Calendar.momentLocalizer(moment))
 
-export default class Agenda extends React.Component {
+class Agenda extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -17,7 +18,7 @@ export default class Agenda extends React.Component {
   }
 
   onSelectEvent (event) {
-    window.location.href = '/s/' + event.data.id
+    this.props.history.push('/s/' + event.data.id)
   }
 
   render () {
@@ -35,3 +36,5 @@ export default class Agenda extends React.Component {
     )
   }
 }
+
+export default withRouter(Agenda)
