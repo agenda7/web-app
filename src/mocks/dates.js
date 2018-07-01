@@ -1,10 +1,16 @@
 import moment from 'moment'
 
 export default [
-  moment().add(1, 'days'),
-  moment().add(2, 'days'),
-  moment().add(3, 'days'),
-  moment().add(4, 'days'),
-  moment().add(4, 'days').add(2, 'hours'),
-  moment().add(4, 'days').add(4, 'hours')
+  moment().add(1, 'days').hour(10).minute(30),
+  moment().add(1, 'days').hour(14).minute(0),
+  moment().add(1, 'days').hour(18).minute(0),
+  moment().add(2, 'days').hour(10).minute(30),
+  moment().add(2, 'days').hour(14).minute(0),
+  moment().add(2, 'days').hour(18).minute(0),
+  moment().add(3, 'days').hour(10).minute(30),
+  moment().add(3, 'days').hour(14).minute(0),
+  moment().add(3, 'days').hour(18).minute(0),
+  moment().add(4, 'days').hour(10).minute(30),
+  moment().add(4, 'days').hour(14).minute(0),
+  moment().add(4, 'days').hour(18).minute(0)
 ]

@@ -26,7 +26,6 @@ export default class Services extends React.Component {
   }
 
   render () {
-    const { match } = this.props
     const { filteredServices } = this.state
     return (
       <Container>

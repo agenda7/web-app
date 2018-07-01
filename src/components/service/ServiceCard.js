@@ -44,17 +44,17 @@ class ServiceCard extends React.Component {
                   {data.company.name.substring(0, 1).toUpperCase()}
                 </Avatar>
               }
-              title={data.company.name}
+              title={data.title}
               subheader={data.price}
             />
             <CardMedia
               className={classes.media}
-              image={'https://picsum.photos/300/200/?image=' + data.id}
+              image={data.image}
               title={data.title}
             />
             <CardContent>
               <Typography component="p">
-                {data.title}
+                {data.company.name}
               </Typography>
             </CardContent>
           </Card>

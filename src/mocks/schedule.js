@@ -1,5 +1,4 @@
 import moment from 'moment'
-import services from './services'
 
 class Schedule {
   constructor () {
@@ -30,7 +29,7 @@ class Schedule {
       id: service.id,
       start: new Date(moment(start)),
       end: new Date(moment(start).add(service.duration, "minutes")),
-      title: moment(start).format('h:mm') + ' - ' + service.title,
+      title: moment(start).format('LT') + ' - ' + service.title,
       data: service
     }
   }

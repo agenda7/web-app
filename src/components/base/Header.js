@@ -54,7 +54,6 @@ class Header extends React.Component {
               <Link to="/">Agenda7</Link>
             </Typography>
             <Link to="/services"><Button color="inherit">Serviços</Button></Link>
-            <Link to="/companies"><Button color="inherit">Empresas</Button></Link>
             <Link to="/agenda"><Button color="inherit">Minha agenda</Button></Link>
             {auth ? (
               <div>

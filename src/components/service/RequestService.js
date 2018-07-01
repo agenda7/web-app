@@ -72,7 +72,7 @@ class RequestService extends React.Component {
 
   render() {
     const { data } = this.props
-    const { form, isScheduled } = this.state
+    const { isScheduled } = this.state
     
     const requestBtn = isScheduled ? null : (
       <Button variant="raised" size="large" color="primary" onClick={this.handleClickOpen.bind(this)}>

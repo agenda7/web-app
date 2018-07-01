@@ -1,5 +1,6 @@
 import Grid from '@material-ui/core/Grid'
 import React from 'react'
+import moment from 'moment'
 import PropTypes from 'prop-types'
 import Avatar from '@material-ui/core/Avatar'
 import Typography from '@material-ui/core/Typography'
@@ -49,7 +50,7 @@ class Service extends React.Component {
       <Container>
         <Card className={classes.card}>
           <CardHeader avatar={avatar} title={data.company.name} />
-          <CardMedia className={classes.media} image={'https://picsum.photos/1000/300/?image=' + data.id} title={data.title} />
+          <CardMedia className={classes.media} image={data.image} title={data.title} />
           <CardContent>
             <Grid container spacing={24}>
               <Grid item xs={12} sm={7} lg={8}>
@@ -62,7 +63,7 @@ class Service extends React.Component {
                 </Typography>
                 <br />
                 <Typography variant="body1" gutterBottom>
-                  <b>Duração:</b> {data.duration}
+                  <b>Duração:</b> {data.duration} minutos
                 </Typography>
               </Grid>
               <Grid item xs={12} sm={5} lg={4}>
