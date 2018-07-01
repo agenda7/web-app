@@ -17,9 +17,10 @@ export default class SearchBar extends React.Component {
             <Search />
           </Grid>
           <Grid item>
-            <TextField id="input-with-icon-grid" label="With a grid" onChange={this.handleChange.bind(this)} />
+            <TextField id="input-with-icon-grid" label="Pesquisar serviços" onChange={this.handleChange.bind(this)} />
           </Grid>
         </Grid>
+        <br />
       </div>
     )
   }

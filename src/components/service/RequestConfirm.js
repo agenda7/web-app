@@ -7,43 +7,33 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar'
 import ListItemText from '@material-ui/core/ListItemText'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import Dialog from '@material-ui/core/Dialog'
-import PersonIcon from '@material-ui/icons/Person'
+import TodayIcon from '@material-ui/icons/Today'
 import AddIcon from '@material-ui/icons/Add'
-
-const emails = ['username@gmail.com', 'user02@gmail.com']
+import dates from '../../mocks/dates'
 
 export default class RequestConfirm extends React.Component {
-  handleListItemClick (value) {
-    this.props.onClose(value)
+  handleListItemClick (date) {
+    this.props.onClose(date.valueOf())
   }
 
   render() {
-    const { onClose, selectedValue, ...other } = this.props
+    const { ...other } = this.props
 
     return (
-      <Dialog onClose={onClose} aria-labelledby="simple-dialog-title" {...other}>
+      <Dialog onClose={this.handleListItemClick.bind(this, null)} aria-labelledby="simple-dialog-title" {...other}>
         <DialogTitle id="simple-dialog-title">Horários disponíveis</DialogTitle>
-        <p>Selecione um dia e horário para execução do serviço:</p>
         <div>
           <List>
-            {emails.map(email => (
-              <ListItem button onClick={() => this.handleListItemClick(email)} key={email}>
+            {dates.map(date => (
+              <ListItem button onClick={this.handleListItemClick.bind(this, date)} key={date.unix()}>
                 <ListItemAvatar>
                   <Avatar>
-                    <PersonIcon />
+                    <TodayIcon />
                   </Avatar>
                 </ListItemAvatar>
-                <ListItemText primary={email} />
+                <ListItemText primary={date.calendar()} />
               </ListItem>
             ))}
-            <ListItem button onClick={() => this.handleListItemClick('addAccount')}>
-              <ListItemAvatar>
-                <Avatar>
-                  <AddIcon />
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText primary="add account" />
-            </ListItem>
           </List>
         </div>
       </Dialog>

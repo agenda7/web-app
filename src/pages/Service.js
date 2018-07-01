@@ -10,18 +10,8 @@ import CardMedia from '@material-ui/core/CardMedia'
 import CardContent from '@material-ui/core/CardContent'
 import { withStyles } from '@material-ui/core/styles'
 import RequestService from '../components/service/RequestService'
-
-const data = {
-  id: 6,
-  title: 'servico 6',
-  description: 'servico 6servico 6servico 6servico 6servico 6servico 6servico 6servico 6servico 6servico 6servico 6servico 6servico 6servico 6servico 6',
-  price: 'R$ 6',
-  duration: '00:30',
-  company: {
-    id: 'company6',
-    name: 'Company 6'
-  }
-}
+import Container from "../components/base/Container"
+import services from '../mocks/services'
 
 const styles = theme => ({
   card: {},
@@ -48,6 +38,7 @@ class Service extends React.Component {
 
   render() {
     const { classes, match } = this.props
+    const data = services[match.params.serviceId - 1]
     const avatar = (
       <Avatar aria-label="Company" className={classes.avatar}>
         {data.company.name.substring(0, 1).toUpperCase()}
@@ -55,10 +46,10 @@ class Service extends React.Component {
     )
 
     return (
-      <article>
+      <Container>
         <Card className={classes.card}>
           <CardHeader avatar={avatar} title={data.company.name} />
-          <CardMedia className={classes.media} image={'https://picsum.photos/300/200/?random'} title={data.title} />
+          <CardMedia className={classes.media} image={'https://picsum.photos/1000/300/?image=' + data.id} title={data.title} />
           <CardContent>
             <Grid container spacing={24}>
               <Grid item xs={12} sm={7} lg={8}>
@@ -80,7 +71,7 @@ class Service extends React.Component {
             </Grid>
           </CardContent>
         </Card>
-      </article>
+      </Container>
     )
   }
 }

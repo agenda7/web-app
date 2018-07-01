@@ -1,39 +1,14 @@
 import React from "react"
 
 import ServiceList from "../components/service/ServiceList"
-
-const services = [
-	{
-		id: 1,
-		title: 'servico 1',
-		price: 'R$ 1',
-		company: {
-			name: 'Company 1'
-		}
-	},
-	{
-		id: 2,
-		title: 'servico 2',
-		price: 'R$ 2',
-		company: {
-			name: 'Company 2'
-		}
-	},
-	{
-		id: 3,
-		title: 'servico 3',
-		price: 'R$ 3',
-		company: {
-			name: 'Company 3'
-		}
-	}
-]
+import services from "../mocks/services"
+import Container from "../components/base/Container"
 
 const Home = () => (
-  <div>
+  <Container>
     <h2>Serviços Recentes</h2>
-    <ServiceList data={services} />
-  </div>
+    <ServiceList data={[services[7], services[14], services[19]]} />
+  </Container>
 )
 
 export default Home

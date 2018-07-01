@@ -5,7 +5,7 @@ import ServiceCard from './ServiceCard'
 
 const parseCards = service => {
   return (
-    <Grid item xs={12} sm={6} lg={4} key={service.id}>
+    <Grid item xs={12} sm={6} md={4} key={service.id}>
       <ServiceCard data={service} />
     </Grid>
   )

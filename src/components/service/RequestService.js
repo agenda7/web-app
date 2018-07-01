@@ -4,7 +4,10 @@ import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 import { withStyles } from '@material-ui/core/styles'
+import { withRouter } from 'react-router-dom'
+
 import RequestConfirm from './RequestConfirm'
+import * as Agenda  from '../../mocks/agenda'
 
 const styles = theme => ({
   textField: {
@@ -16,21 +19,31 @@ class RequestService extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
+      dialogOpen: false,
       form: {
-        datetime: null,
-        open: false
+        datetime: null
       }
     }
   }
 
   handleClickOpen () {
     this.setState({
-      open: true
+      dialogOpen: true
     })
   }
 
   handleClose (value) {
-    this.setState({ open: false })
+    if (value && typeof value === 'number') {
+      this.setState({
+        form: {
+          ...this.state.form,
+          datetime: value
+        },
+        dialogOpen: false
+      }, this.submit.bind(this))
+    } else {
+      this.setState({ dialogOpen: false })
+    }
   }
 
   handleChange (field) {
@@ -45,7 +58,9 @@ class RequestService extends React.Component {
   }
 
   submit () {
-    console.log(this.state.form)
+    const { data, history } = this.props
+    Agenda.push(data, this.state.form.datetime)
+    history.push('/agenda')
   }
 
   render() {
@@ -59,23 +74,11 @@ class RequestService extends React.Component {
         </Typography>
         <br />
         <Typography component="p" gutterBottom>
-          <TextField
-            label="Data e horário do serviço:"
-            type="datetime-local"
-            className={classes.TextField}
-            onChange={this.handleChange('datetime')}
-            InputLabelProps={{
-              shrink: true
-            }}
-          />
-        </Typography>
-        <br />
-        <Typography component="p" gutterBottom>
           <Button variant="raised" size="large" color="primary" onClick={this.handleClickOpen.bind(this)}>
             Solicitar serviço
           </Button>
           <RequestConfirm
-            open={this.state.open}
+            open={this.state.dialogOpen}
             onClose={this.handleClose.bind(this)}
           />
         </Typography>
@@ -89,4 +92,4 @@ RequestService.propTypes = {
   classes: PropTypes.object.isRequired,
 }
 
-export default withStyles(styles)(RequestService)
+export default withStyles(styles)(withRouter(RequestService))
