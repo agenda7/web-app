@@ -1,6 +1,5 @@
 import Grid from '@material-ui/core/Grid'
 import React from 'react'
-import moment from 'moment'
 import PropTypes from 'prop-types'
 import Avatar from '@material-ui/core/Avatar'
 import Typography from '@material-ui/core/Typography'
